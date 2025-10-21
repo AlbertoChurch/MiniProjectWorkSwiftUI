@@ -16,7 +16,7 @@ struct Testopers: View {
                 
             } else {
                 Image(systemName: "person.fill")
-                TextField(title, text: $valore)
+                TextField(title, text: $valore).textContentType(.emailAddress)
             }
         }.font(.headline)
             .foregroundColor(.black)

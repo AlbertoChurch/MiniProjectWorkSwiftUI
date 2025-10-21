@@ -5,4 +5,7 @@
 //  Created by s12 on 21/10/25.
 //
 
-import Foundation
+struct TipoOggetto: Identifiable {
+    let id: Int
+    let nome: String
+}

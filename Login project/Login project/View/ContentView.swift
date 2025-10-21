@@ -5,7 +5,7 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             TabView {
-                HomeView()
+                OrdinePage()
                     .tabItem {
                         Label("Ordini", systemImage: "cart.fill")
                     }
@@ -29,12 +29,7 @@ struct ContentView: View {
 }
     
     
-    struct HomeView: View {
-        var body: some View {
-            Text("Home Screen")
-                .font(.largeTitle)
-        }
-    }
+
 
     struct SearchView: View {
         var body: some View {
