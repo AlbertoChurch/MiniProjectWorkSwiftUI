@@ -1,35 +1,24 @@
-package it.itsrizzoli.ProgettoSwiftUI.Model;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import jakarta.persistence.*;
-import org.antlr.v4.runtime.misc.NotNull;
+package it.itsrizzoli.ProgettoSwiftUI.DTO;
 
 import java.util.UUID;
 
-@Entity
-public class Utente {
+public class UtenteDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
-
-    @NotNull
     private String nome;
-
-    @NotNull
     private String cognome;
-
-    @NotNull
     private String email;
-
-    @NotNull
     private String password;
+    private UUID idRuolo;
 
-    @ManyToOne
-    @JoinColumn(name = "id_ruolo")
-    @JsonManagedReference
-    private Ruolo ruolo;
+    public UtenteDTO(UUID id, String nome, String cognome, String email, String password, UUID idRuolo) {
+        this.id = id;
+        this.nome = nome;
+        this.cognome = cognome;
+        this.email = email;
+        this.password = password;
+        this.idRuolo = idRuolo;
+    }
 
     public UUID getId() {
         return id;
@@ -61,5 +50,21 @@ public class Utente {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public UUID getIdRuolo() {
+        return idRuolo;
+    }
+
+    public void setIdRuolo(UUID idRuolo) {
+        this.idRuolo = idRuolo;
     }
 }
