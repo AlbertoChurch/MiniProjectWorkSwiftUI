@@ -6,19 +6,18 @@ struct Bottone: View {
     @Binding var psw: String
     @Binding var err: Bool
     var funzione : () -> Void = { }
-    
+
     var body: some View {
-        Button(action: funzione){
+        Button(action: funzione) {
             Text(testo)
                 .font(.headline)
-                .foregroundColor(.white)
                 .fontWeight(.bold)
+                .foregroundColor(.white)
                 .frame(maxWidth: .infinity)
                 .padding()
-                .background(!err  ? .green : .gray )
+                .background(!err ? Color.green : Color.gray)
                 .cornerRadius(10)
         }
-            
-        
     }
 }
+

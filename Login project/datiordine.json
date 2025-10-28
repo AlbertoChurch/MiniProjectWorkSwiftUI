@@ -1,0 +1,40 @@
+[
+    {
+        "id": 1,
+        "dataOrdine": "2023-11-11",
+        "ordineOggetti": [
+            {
+                "id": 1,
+                "oggetto": {
+                    "id": 2,
+                    "nomeOggetto": "Oggettoprova",
+                    "tipoOggetti": [
+                        {
+                            "id": 1,
+                            "tipoOggetto": "Tipo1"
+                        },
+                        {
+                            "id": 2,
+                            "tipoOggetto": "Tipo2"
+                        }
+                    ]
+                },
+                "quantita": 3
+            },
+            {
+                "id": 2,
+                "oggetto": {
+                    "id": 1,
+                    "nomeOggetto": "Oggetto",
+                    "tipoOggetti": [
+                        {
+                            "id": 2,
+                            "tipoOggetto": "Tipo2"
+                        }
+                    ]
+                },
+                "quantita": 5
+            }
+        ]
+    }
+]
