@@ -1,18 +1,17 @@
 package it.itsrizzoli.ProgettoSwiftUI.Model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import org.antlr.v4.runtime.misc.NotNull;
+import jakarta.validation.constraints.NotNull;
 
-import java.util.UUID;
+import java.time.temporal.UnsupportedTemporalTypeException;
 
 @Entity
 public class Utente {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @NotNull
     private String nome;
@@ -26,16 +25,27 @@ public class Utente {
     @NotNull
     private String password;
 
+    @NotNull
     @ManyToOne
     @JoinColumn(name = "id_ruolo")
     @JsonManagedReference
     private Ruolo ruolo;
 
-    public UUID getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public Utente() {}
+
+    public Utente(String nome, String cognome, String email, String password, Ruolo ruolo) {
+        this.nome = nome;
+        this.cognome = cognome;
+        this.email = email;
+        this.password = password;
+        this.ruolo = ruolo;
+    }
+
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -61,5 +71,21 @@ public class Utente {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setRuolo(Ruolo ruolo) {
+        this.ruolo = ruolo;
+    }
+
+    public Ruolo getRuolo() {
+        return ruolo;
     }
 }

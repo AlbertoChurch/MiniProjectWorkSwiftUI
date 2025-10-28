@@ -4,14 +4,14 @@ import java.util.UUID;
 
 public class UtenteDTO {
 
-    private UUID id;
+    private Long id;
     private String nome;
     private String cognome;
     private String email;
     private String password;
-    private UUID idRuolo;
+    private Integer idRuolo;
 
-    public UtenteDTO(UUID id, String nome, String cognome, String email, String password, UUID idRuolo) {
+    public UtenteDTO(Long id, String nome, String cognome, String email, String password, Integer idRuolo) {
         this.id = id;
         this.nome = nome;
         this.cognome = cognome;
@@ -20,11 +20,11 @@ public class UtenteDTO {
         this.idRuolo = idRuolo;
     }
 
-    public UUID getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -60,11 +60,11 @@ public class UtenteDTO {
         this.password = password;
     }
 
-    public UUID getIdRuolo() {
+    public Integer getIdRuolo() {
         return idRuolo;
     }
 
-    public void setIdRuolo(UUID idRuolo) {
+    public void setIdRuolo(Integer idRuolo) {
         this.idRuolo = idRuolo;
     }
 }

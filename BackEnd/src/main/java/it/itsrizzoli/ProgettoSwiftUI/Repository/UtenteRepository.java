@@ -6,17 +6,19 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
-
-public interface UtenteRepository extends JpaRepository<Utente, UUID> {
+public interface UtenteRepository extends JpaRepository<Utente, Long> {
 
     Optional<Utente> findByEmail(String email);
 
     boolean existsByEmail(String email);
+
+    List<Utente> findAllById(Long id);
 
     List<Utente> findByNome(String nome);
 
     List<Utente> findByCognome(String cognome);
 
     List<Utente> findByRuolo(Ruolo ruolo);
+
+    List<Utente> findByPassword(String password);
 }

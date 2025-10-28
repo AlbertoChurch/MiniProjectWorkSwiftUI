@@ -2,7 +2,7 @@ package it.itsrizzoli.ProgettoSwiftUI.Model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
-import org.antlr.v4.runtime.misc.NotNull;
+import jakarta.validation.constraints.NotNull;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -10,7 +10,7 @@ import java.util.Set;
 @Entity
 public class Ruolo {
     @Id
-    @GeneratedValue (strategy= GenerationType.AUTO)
+    @GeneratedValue (strategy= GenerationType.IDENTITY)
     private int id;
 
     @NotNull
