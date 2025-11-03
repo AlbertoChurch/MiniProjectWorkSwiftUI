@@ -1,11 +1,9 @@
-//
-//  Utente.swift
-//  BetaProject
-//
-//  Created by s12 on 21/10/25.
-//
-
-import Foundation
-
-
+struct Utente: Identifiable, Codable {
+    var id: Int
+    var nome: String
+    var cognome: String
+    var email: String
+    var ruolo: Ruolo
+    var password: String
+}
 

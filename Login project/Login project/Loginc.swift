@@ -9,17 +9,22 @@ import SwiftUI
 
 @main
 struct Login_projectApp: App {
-    @StateObject var vm = LoginViewModel.singleton
+    
+    @StateObject private var auth = AuthService.shared
     
     var body: some Scene {
-            WindowGroup {
-                if !vm.notLogged {
-                     Login(vm: vm)
+        WindowGroup {
+            if auth.isLogged {
+                Mainview()
+            } else {
+                if auth.toLogin{
+                    Login()
                 } else {
-                    ContentView()
+                    Register()
                 }
             }
         }
+    }
 }
 
 

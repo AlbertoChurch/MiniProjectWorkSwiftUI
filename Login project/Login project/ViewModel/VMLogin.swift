@@ -1,33 +1,33 @@
-import Foundation
-import Combine
+import SwiftUI
 
-final class LoginViewModel: ObservableObject {
-    @Published var username: String = "huafhhfasiofihsahfia" { didSet { correggi() } }
-    @Published var password: String = "jfasfakjffsfs" { didSet { correggi() } }
-    @Published var errore: Bool = false
-    @Published var notLogged: Bool = false
+class LoginViewModel: ObservableObject {
+    @Published var email: String = "" { didSet { correggi() } }
+    @Published var password: String = "" { didSet { correggi() } }
     
-    static var singleton = LoginViewModel()
+    @Published var errore: Bool = false
+    
+    static var shared = LoginViewModel()
     
     private init() {}
-
+    
     
     private func correggi() {
         if (errore){
-            errore = username.isEmpty || password.count < 8
+            errore = !email.contains("@") || !email.contains(".") || password.count < 8
         }
     }
-
-    func controllore() {
-        if username.isEmpty || password.count < 8 {
-            print("ricontrolla")
+    
+    func login() {
+        if !email.contains("@") || !email.contains(".") || password.count < 8 {
             errore = true
         } else {
-            print("ok")
-            username = ""
-            password = ""
-            errore = false
-            notLogged = true
+            AuthService.shared.login(email)
         }
+    }
+    
+    func reset() {
+        email = ""
+        password = ""
+        errore = false
     }
 }

@@ -1,8 +1,4 @@
-//
-//  Ruolo.swift
-//  BetaProject
-//
-//  Created by s12 on 21/10/25.
-//
-
-import Foundation
+struct Ruolo: Identifiable, Codable {
+    var id: Int
+    var nome: String
+}

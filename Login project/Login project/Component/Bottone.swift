@@ -2,22 +2,21 @@ import SwiftUI
 
 struct Bottone: View {
     var testo: String
-    @Binding var usn: String
-    @Binding var psw: String
     @Binding var err: Bool
-    var funzione : () -> Void = { }
-
+    var azione : ()->()
+    
     var body: some View {
-        Button(action: funzione) {
+        Button(action: azione){
             Text(testo)
                 .font(.headline)
-                .fontWeight(.bold)
                 .foregroundColor(.white)
+                .fontWeight(.bold)
                 .frame(maxWidth: .infinity)
                 .padding()
-                .background(!err ? Color.green : Color.gray)
+                .background(err  ? .gray : .green )
                 .cornerRadius(10)
         }
+            
+        
     }
 }
-

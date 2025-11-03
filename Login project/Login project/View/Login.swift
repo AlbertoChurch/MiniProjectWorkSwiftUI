@@ -1,53 +1,49 @@
 import SwiftUI
 
 struct Login: View {
-    @ObservedObject var vm = LoginViewModel.singleton
+    @ObservedObject var vm = LoginViewModel.shared
     
     var body: some View {
-        NavigationStack {
             Text("Login")
                 .fontWeight(.bold)
                 .font(.largeTitle)
                 .padding()
             
             VStack {
-                Testopers(title: "username",
-                          valore: $vm.username,
-                          IsPsw: false,
-                          errore: vm.errore) {
-                    if vm.errore {
-                        return !vm.username.isEmpty
-                    } else {
-                        return true
-                    }
+                AuthCampoInput(
+                    nomeCampo: "Email",
+                    testo: $vm.email,
+                    IsPsw: false,
+                    errore: vm.errore
+                ) {
+                    vm.errore ? (vm.email.contains("@") && vm.email.contains(".")) : true
                 }
-                
+
+                Divider()
+
+                AuthCampoInput(
+                    nomeCampo: "Password",
+                    testo: $vm.password,
+                    IsPsw: true,
+                    errore: vm.errore
+                ) {
+                    vm.errore ? (vm.password.count >= 8) : true
+                }
+
                 Divider()
                 
-                Testopers(title: "Password",
-                          valore: $vm.password,
-                          IsPsw: true,
-                          errore: vm.errore) {
-                    if vm.errore {
-                        return vm.password.count >= 8
-                    } else {
-                        return true
-                    }
-                }
-                
-                Divider()
-                
-                Bottone(testo: "Login", usn: $vm.username, psw: $vm.password,
+                Bottone(testo: "Login",
                         err: $vm.errore,
-                        funzione: vm.controllore)
+                        azione: vm.login)
                 
-                NavigationLink("Non hai un account? Registrati", destination: Register()).font(.headline).navigationBarBackButtonHidden(true)
-                
+                Button("Non hai un account? Registrati"){ AuthService.shared.toLogin = false}.font(.headline)
+            }.onAppear {
+                vm.reset()
             }
             .frame(width: 300, height: 250)
         }
-    }
 }
+
 
 #Preview {
     Login()
