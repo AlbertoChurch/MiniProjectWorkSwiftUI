@@ -104,11 +104,11 @@ public class DataInitialization implements CommandLineRunner {
             ogg1.setQuantita(5);
             ordineOggetti.add(ogg1);
 
-            OrdineOggetto ogg2 = new OrdineOggetto();
-            ogg2.setOrdine(ord);
-            ogg2.setOggetto(OggettoRepository.getReferenceById(2));
-            ogg2.setQuantita(3);
-            ordineOggetti.add(ogg2);
+//            OrdineOggetto ogg2 = new OrdineOggetto();
+//            ogg2.setOrdine(ord);
+//            ogg2.setOggetto(OggettoRepository.getReferenceById(2));
+//            ogg2.setQuantita(3);
+//            ordineOggetti.add(ogg2);
 
             ord.setOrdineOggetti(ordineOggetti);
 

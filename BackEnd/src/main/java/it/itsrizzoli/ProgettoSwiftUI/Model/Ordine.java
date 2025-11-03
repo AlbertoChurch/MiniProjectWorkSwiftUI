@@ -1,5 +1,6 @@
 package it.itsrizzoli.ProgettoSwiftUI.Model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import java.sql.Date;
 import java.util.HashSet;
@@ -15,7 +16,9 @@ public class Ordine {
     private Date dataOrdine;
 
     @OneToMany(mappedBy = "ordine", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private Set<OrdineOggetto> ordineOggetti = new HashSet<>();
+
 
     public Ordine() {
     }

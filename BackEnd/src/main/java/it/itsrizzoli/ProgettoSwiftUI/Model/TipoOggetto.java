@@ -1,5 +1,6 @@
 package it.itsrizzoli.ProgettoSwiftUI.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import java.util.HashSet;
@@ -16,7 +17,9 @@ public class TipoOggetto {
     String tipoOggetto;
 
     @ManyToMany(mappedBy = "tipoOggetti")
+    @JsonIgnore // Evita il loop infinito
     private Set<Oggetto> oggetti = new HashSet<>();
+
 
     public String getTipoOggetto() {
         return tipoOggetto;

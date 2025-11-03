@@ -1,5 +1,6 @@
 package it.itsrizzoli.ProgettoSwiftUI.Model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 @Entity
@@ -11,11 +12,15 @@ public class OrdineOggetto {
 
     @ManyToOne
     @JoinColumn(name = "ordine_id")
+    @JsonBackReference
     private Ordine ordine;
 
     @ManyToOne
     @JoinColumn(name = "oggetto_id")
-    private Oggetto oggetto;
+    private Oggetto oggetto;  // non serializziamo l'oggetto lato figlio
+
+
+
 
     private int quantita;
 

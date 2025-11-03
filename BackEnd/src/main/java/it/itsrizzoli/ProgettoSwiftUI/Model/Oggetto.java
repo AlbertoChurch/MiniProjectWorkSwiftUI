@@ -1,8 +1,6 @@
 package it.itsrizzoli.ProgettoSwiftUI.Model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -14,9 +12,6 @@ public class Oggetto {
     private int id;
 
     private String nomeOggetto;
-
-    @OneToMany(mappedBy = "oggetto", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<OrdineOggetto> ordineOggetti = new HashSet<>();
 
     @ManyToMany
     @JoinTable(
@@ -40,14 +35,6 @@ public class Oggetto {
 
     public void setNomeOggetto(String nomeOggetto) {
         this.nomeOggetto = nomeOggetto;
-    }
-
-    public Set<OrdineOggetto> getOrdineOggetti() {
-        return ordineOggetti;
-    }
-
-    public void setOrdineOggetti(Set<OrdineOggetto> ordineOggetti) {
-        this.ordineOggetti = ordineOggetti;
     }
 
     public Set<TipoOggetto> getTipoOggetti() {
